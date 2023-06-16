@@ -1,7 +1,27 @@
- const htmlElement = document.querySelector('html');
- const langValue = htmlElement.getAttribute('lang');
- const excludedLanguages = ['ae', 'ar', 'arc', 'bcc', 'bqi', 'ckb', 'dv', 'fa', 'glk', 'he', 'ku', 'mzn', 'nqo', 'pnb', 'ps', 'ro', 'sd', 'ug', 'ur', 'yi'];
+const htmlElement = document.querySelector('html');
+const excludedLanguages = [
+  'ae',
+  'ar',
+  'arc',
+  'bcc',
+  'bqi',
+  'ckb',
+  'dv',
+  'fa',
+  'glk',
+  'he',
+  'ku',
+  'mzn',
+  'nqo',
+  'ro',
+  'pnb',
+  'ps',
+  'sd',
+  'ug',
+  'ur',
+  'yi'
+];
 
-if (!excludedLanguages.includes(langValue)) {
- htmlElement.style.removeProperty('padding-left');
+ if (!excludedLanguages.includes(htmlElement.lang)) {
+  htmlElement.style.removeProperty('padding-left');
 }
