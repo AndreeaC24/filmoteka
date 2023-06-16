@@ -1,0 +1,17 @@
+ 
+@mixin background {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+@mixin center-text{
+  align-items: center;
+  text-align: center;
+} 
+@mixin row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

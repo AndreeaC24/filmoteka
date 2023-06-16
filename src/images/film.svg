@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<symbol id="logo_icon" viewBox="0 0 32 32">
+    <path d="M26.4265 2.66675H5.57317C3.96786 2.66675 2.6665 3.96811 2.6665 5.57341V26.4267C2.6665 28.0321 3.96786 29.3334 5.57317 29.3334H26.4265C28.0318 29.3334 29.3332 28.0321 29.3332 26.4267V5.57341C29.3332 3.96811 28.0318 2.66675 26.4265 2.66675Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M9.3335 2.66675V29.3334" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.6665 2.66675V29.3334" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.6665 16H29.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.6665 9.33325H9.33317" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.6665 22.6667H9.33317" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.6665 22.6667H29.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.6665 9.33325H29.3332" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<symbol id="search_icon" viewBox="0 0 32 32">
+<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667z"></path>
+<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M28 28.001l-5.8-5.8"></path>
+</symbol>
+</defs>
+</svg>
