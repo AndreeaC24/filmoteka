@@ -1,4 +1,5 @@
-const htmlElement = document.querySelector('html');
+ const htmlElement = document.querySelector('html');
+ 
 const excludedLanguages = [
   'ae',
   'ar',
@@ -22,6 +23,6 @@ const excludedLanguages = [
   'yi'
 ];
 
- if (!excludedLanguages.includes(htmlElement.lang)) {
-  htmlElement.style.removeProperty('padding-left');
+ if (!excludedLanguages.includes(htmlElement.lang)) { 
+  htmlElement.style.paddingLeft = null;
 }
