@@ -6,25 +6,29 @@ const URL = 'https://api.themoviedb.org/3';
 const getGenres = (genreIds, genres) => {
   const arr = [];
 
-  for (const value of genres) {
-    if (genreIds === 'N/A' || genreIds.length === 0) {
-      arr.push('Other');
-      break;
-    } else if (genreIds.includes(value.id)) {
-      arr.push(value.name);
+  for (const id of genreIds) {
+    const genre = genres.find((genre) => genre.id === id);
+    if (genre) {
+      arr.push(genre.name);
     }
   }
+
+  if (arr.length === 0) {
+    arr.push('Other');
+  }
+
   return arr;
 };
+
 const fetchGenreList = async () => {
   try {
     const response = await axios.get(`${URL}/genre/movie/list?api_key=${API_KEY}`);
     const genres = response.data.genres;
     return genres;
   } catch (error) {
-    console.error('Error ', error);
+    console.error('Error: ', error);
     return [];
   }
 };
-export { fetchGenreList, getGenres }; 
 
+export { fetchGenreList, getGenres };

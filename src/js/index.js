@@ -1,22 +1,27 @@
-import { fetchGenreList, getGenres } from './fetchGenre';
-import { fetchMovies, fetchPopularMovies } from './fetchmvs';
+import { fetchGenreList } from './fetchGenre';
 import { handleResponse, markupGalleryItem } from './markup';
-import './search';
+import { fetchPopularMovies } from './fetchmvs';
 
+const currentPage = 1;
 
-let currentPage = 1;
+const getGalleryElement = () => document.querySelector('.gallery');
 
 const initialize = async () => {
-  const getGalleryElement = () => document.querySelector('.gallery');
+  const galleryElement = getGalleryElement();
+  if (!galleryElement) {
+    return;
+  }
 };
+
 const initializeApp = async () => {
   try {
-   // genreList = await fetchGenreList();
+    const genreList = await fetchGenreList();
     const popularMovies = await fetchPopularMovies(currentPage);
-    handleResponse(popularMovies, true);
+    handleResponse(popularMovies, true, genreList);
   } catch (error) {
     console.error('Error - popular movies: ', error);
   }
+
   initialize();
 };
 
