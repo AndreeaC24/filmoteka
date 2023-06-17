@@ -1,6 +1,8 @@
-import { fetchMovies, fetchPopularMovies } from './fetchmvs';
+import { fetchMovies } from './fetchmvs';
 import { handleResponse } from './markup'; 
 import { fetchGenreList } from './fetchGenre';
+import {initializeModal } from './modal';
+
 
 const searchForm = document.querySelector('#form__search');
 const searchError = document.querySelector('#searchError');
@@ -27,6 +29,8 @@ searchForm.addEventListener('submit', async event => {
     const response = await fetchMovies(searchQuery, currentPage);
     genreList = await fetchGenreList();
     handleResponse(response, false, genreList);
+    
+initializeModal();
     if (currentPage === 1 && !response.results.length) {
       searchError.textContent =
         'Search result not successful. Enter the correct movie name.';

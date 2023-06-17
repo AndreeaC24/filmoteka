@@ -16,7 +16,7 @@ const handleResponse = (data, isPopular = false, genreList) => {
   const markup = data.results
     .map((result, index) => {
       if (isPopular) {
-        return markupGalleryItem(result, index, genreList);
+        return markupGalleryItem(result, index, genreList, true);
       } else {
          return markupGalleryItem(result, index, genreList);
       }
@@ -27,16 +27,14 @@ const handleResponse = (data, isPopular = false, genreList) => {
 
 
 const markupGalleryItem = (result, index, genreList, isPopular = false) => {
-  const { title, release_date, poster_path, genre_ids } = result;
+  const { title, release_date, poster_path, genre_ids, id } = result;
   const coverUrl = poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : nullPoster;
   const genres = genre_ids ? getGenres(genre_ids, genreList) : ['Unknown'];
   const year = release_date ? release_date.slice(0, 4) : 'N/A';
   return `
-    <li class="gallery__items">
+    <li class="gallery__items" data-id="${id}">
     <div class="gallery__items__img">
-      <a href="${coverUrl}" data-lightbox="group-${index}">
-        <img src="${coverUrl}" alt="${title}" loading="lazy" />
-      </a>
+       <img src="${coverUrl}" alt="${title}" loading="lazy" /> 
     </div>
     <div class="gallery__items__details">
       <p class="gallery__items__details--info">

@@ -6,7 +6,7 @@ const URL = 'https://api.themoviedb.org/3';
 const fetchMovies = async (searchQuery, page) => {
   try {
     const response = await axios.get(
-      `${URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&language=en-US&page=${page}`
+      `${URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&language=en-US&page=${page}` 
     );
     console.log(response.data);
     return response.data;
@@ -18,12 +18,27 @@ const fetchMovies = async (searchQuery, page) => {
 const fetchPopularMovies = async page => {
   try {
     const TOP_URL = `${URL}/trending/movie/week?api_key=${API_KEY}&page=${page}`;
-    const response = await fetch(TOP_URL);
-    const data = await response.json();
-    return data;
+    const response = await axios.get(TOP_URL);
+    // const data = await response.json();
+    // return data;
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error('Error - popular movies: ', error);
     throw error;
   }
 };
-export { fetchMovies, fetchPopularMovies };
+
+const fetchMovieDetails = async (movieId) => {
+  try {
+    const response = await axios.get(
+      `${URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error - movie details: ', error);
+    throw error;
+  }
+};
+export { fetchMovies, fetchPopularMovies, fetchMovieDetails };

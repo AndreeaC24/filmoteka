@@ -2,6 +2,7 @@ import { fetchGenreList } from './fetchGenre';
 import { handleResponse } from './markup';
 import { fetchPopularMovies } from './fetchmvs';
 import './search';
+import { initializeModal } from './modal';
 
 const currentPage = 1;
 
@@ -18,7 +19,8 @@ const initializeApp = async () => {
   try {
     const genreList = await fetchGenreList();
     const popularMovies = await fetchPopularMovies(currentPage);
-    handleResponse(popularMovies, true, genreList);
+    handleResponse(popularMovies, true, genreList);  
+    initializeModal();
   } catch (error) {
     console.error('Error', error);
   }
