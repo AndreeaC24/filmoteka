@@ -2,7 +2,7 @@ import { getGenres } from './fetchGenre';
 
 const nullPoster = `https://tacm.com/wp-content/uploads/2018/01/no-image-available.jpeg`;
 
-const handleResponse = (data, isPopular = false, genreList) => {
+const handleResponse = (data, isPopular = false, genreList) => { 
   if (!data.results) {
     console.error('Invalid API response');
     return;
@@ -17,12 +17,11 @@ const handleResponse = (data, isPopular = false, genreList) => {
     .map((result, index) => {
       if (isPopular) {
         return markupGalleryItem(result, index, genreList);
-      } 
-      else {
-        return markupGalleryItem(result, index, genreList);
+      } else {
+         return markupGalleryItem(result, index, genreList);
       }
     })
-    .join('');
+    .join(''); 
   galleryElement.insertAdjacentHTML('beforeend', markup);
 };
 

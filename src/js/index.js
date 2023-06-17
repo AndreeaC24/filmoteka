@@ -1,6 +1,7 @@
 import { fetchGenreList } from './fetchGenre';
-import { handleResponse, markupGalleryItem } from './markup';
+import { handleResponse } from './markup';
 import { fetchPopularMovies } from './fetchmvs';
+import './search';
 
 const currentPage = 1;
 
@@ -19,7 +20,7 @@ const initializeApp = async () => {
     const popularMovies = await fetchPopularMovies(currentPage);
     handleResponse(popularMovies, true, genreList);
   } catch (error) {
-    console.error('Error - popular movies: ', error);
+    console.error('Error', error);
   }
 
   initialize();

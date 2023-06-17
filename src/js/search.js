@@ -1,10 +1,12 @@
-import { fetchMovies } from './fetchmvs';
-import { handleResponse } from './markup';
+import { fetchMovies, fetchPopularMovies } from './fetchmvs';
+import { handleResponse } from './markup'; 
+import { fetchGenreList } from './fetchGenre';
 
 const searchForm = document.querySelector('#form__search');
 const searchError = document.querySelector('#searchError');
 let currentPage = 1;
 let searchQuery = '';
+let genreList = [];
 
 searchForm.addEventListener('submit', async event => {
   event.preventDefault();
@@ -23,11 +25,13 @@ searchForm.addEventListener('submit', async event => {
   }
   try {
     const response = await fetchMovies(searchQuery, currentPage);
-    handleResponse(response);
+    genreList = await fetchGenreList();
+    handleResponse(response, false, genreList);
     if (currentPage === 1 && !response.results.length) {
       searchError.textContent =
         'Search result not successful. Enter the correct movie name.';
-    }
+    } 
+
     searchForm.reset();
   } catch (error) {
     console.error(error);

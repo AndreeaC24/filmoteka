@@ -8,6 +8,7 @@ const fetchMovies = async (searchQuery, page) => {
     const response = await axios.get(
       `${URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&language=en-US&page=${page}`
     );
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Something went wrong with the API search fetch: ' + error);
