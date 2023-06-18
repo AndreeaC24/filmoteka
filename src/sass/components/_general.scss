@@ -1,4 +1,3 @@
-
 * {
   -webkit-margin-before: 0;
   margin-block-start: 0;
@@ -34,3 +33,7 @@ a {
   text-decoration: none;
 }
 
+body.dark {
+  background-color: #23262d;
+  color: white;
+}

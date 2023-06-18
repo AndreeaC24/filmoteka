@@ -3,6 +3,7 @@ import { handleResponse } from './markup';
 import { fetchPopularMovies } from './fetchmvs';
 import './search';
 import { initializeModal } from './modal';
+import { showLoader, hideLoader } from './loader.js';
 
 const currentPage = 1;
 
@@ -17,10 +18,12 @@ const initialize = async () => {
 
 const initializeApp = async () => {
   try {
+    showLoader();
     const genreList = await fetchGenreList();
     const popularMovies = await fetchPopularMovies(currentPage);
     handleResponse(popularMovies, true, genreList);  
     initializeModal();
+    hideLoader();
   } catch (error) {
     console.error('Error', error);
   }
@@ -29,3 +32,4 @@ const initializeApp = async () => {
 };
 
 initializeApp();
+
