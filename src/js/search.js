@@ -1,8 +1,9 @@
 import { fetchMovies } from './fetchmvs';
 import { handleResponse } from './markup'; 
 import { fetchGenreList } from './fetchGenre';
-import {initializeModal } from './modal';
-
+import { showPage, paginationButtons } from './page';
+import { initializeModal } from './modal';
+import { clearGallery } from './galleryClear';
 
 const searchForm = document.querySelector('#form__search');
 const searchError = document.querySelector('#searchError');
@@ -28,24 +29,21 @@ searchForm.addEventListener('submit', async event => {
   try {
     const response = await fetchMovies(searchQuery, currentPage);
     genreList = await fetchGenreList();
-    handleResponse(response, false, genreList);
-    
-initializeModal();
+    handleResponse(response, false, genreList); 
+   
+    initializeModal();
     if (currentPage === 1 && !response.results.length) {
       searchError.textContent =
         'Search result not successful. Enter the correct movie name.';
     } 
 
+    showPage(currentPage, true, searchQuery);
     searchForm.reset();
   } catch (error) {
     console.error(error);
     searchError.textContent = 'Error occurred. Please try again later.';
   }
+  
 });
 
-const clearGallery = () => {
-  const galleryElement = document.querySelector('.gallery');
-  if (galleryElement) {
-    galleryElement.innerHTML = '';
-  }
-};
+clearGallery();

@@ -1,0 +1,123 @@
+.movie-container {
+  // width: 480px;
+  margin: 0, auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.gallery {
+  margin: 60px, auto, 50px, auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  &__items {
+    width: 280px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--main-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+      0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 4px 4px;
+    padding:25px;
+  }
+  &__items__details {
+    width: 100%;
+    margin-top: 10px;
+    align-items: flex-start;
+  }
+}
+// .image {
+//   width: 100%;
+// }
+.gallery__items__details--info {
+  color: var(--button-color);
+  display: inline;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+.gallery__items__img img{
+  max-width: 500px;
+  max-height:700px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 10px;
+  font-family: var(--main-font);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.button-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+.right-button {
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-style: none;
+  &:hover,
+  &:active {
+    background-color: var(--button-color);
+    color: var(--main-color);
+  }
+}
+#pagination-button {
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-style: none;
+  &:hover,
+  &:active {
+    background-color: var(--button-color);
+    color: var(--main-color);
+  }
+}
+#year {
+  padding-left: 10px;
+  border-left: 1px solid var(--button-color);
+}
+.pagination {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0, 50px;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .movie-container {
+    width: 768px;
+  }
+  .gallery__items {
+    flex-basis: calc((100% / 2) - 30px);
+  }
+}
+@media (min-width: 1280px) {
+  .movie-container {
+    width: 1280px;
+  }
+  .gallery__items {
+    flex-basis: calc((100% / 3) - 60px);
+  }
+}
