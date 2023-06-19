@@ -47,4 +47,9 @@ body.dark {
       margin: 10px;
     }
   }
+  .gallery__items{
+    background-color: #23262d;
+    color: white;
+    border:1px solid var(--main-color);
+  }
 }
