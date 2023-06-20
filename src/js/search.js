@@ -1,7 +1,7 @@
 import { fetchMovies } from './fetchmvs';
 import { handleResponse } from './markup'; 
 import { fetchGenreList } from './fetchGenre';
-import { showPage, paginationButtons } from './page';
+import { showPage } from './page';
 import { initializeModal } from './modal';
 import { clearGallery } from './galleryClear';
 
@@ -45,5 +45,5 @@ searchForm.addEventListener('submit', async event => {
   }
   
 });
-
+showPage(currentPage, false, '', true);
 clearGallery();

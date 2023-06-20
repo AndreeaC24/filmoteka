@@ -1,4 +1,5 @@
-import { fetchMovieDetails } from './fetchmvs';
+import { fetchMovieDetails } from './fetchmvs'; 
+//import { getGalleryElement } from './markup';
 
 const modal = document.querySelector('.modal');
 const modalContent = modal.querySelector('.modal__content');
@@ -8,13 +9,9 @@ const toggleModal = () => {
 };
 
 const createModalContent = movie => {
-  const genres = movie.genres
-    ? movie.genres.map(genre => genre.name)
-    : ['Unknown'];
+  const genres = movie.genres ? movie.genres.map(genre => genre.name): ['Unknown'];
 
-  const coverUrl = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    : nullPoster;
+  const coverUrl = movie.poster_path  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`: nullPoster;
   //console.log(movie.genre_ids);
   const markup = `
     <section class="section__modal"> 
@@ -62,7 +59,6 @@ const createModalContent = movie => {
         </ul>
         </section>
     `;
-
   modalContent.innerHTML = markup;
 };
 

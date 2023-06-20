@@ -1,21 +1,13 @@
 <section class="movies">
   <div class="movie-container container">
     <ul class="gallery"></ul>
-    <div class="pagination">
-      <button type="button" class="right-button">
-        <svg class="button-icon">
-          <use href="./images/symbol-defs.svg#icon-arrow-left"></use>
-        </svg>
-      </button>
-      <button id="pagination-button" type="button">1</button>
-      <button id="pagination-button" type="button">2</button>
-      <button id="pagination-button" type="button">3</button>
-      <button id="pagination-button" type="button">4</button>
-      <button type="button" class="right-button">
-        <svg class="button-icon">
-          <use href="./images/symbol-defs.svg#icon-arrow-right"></use>
-        </svg>
-      </button>
+    <div class="pagination--container">
+      <div id="pagination">
+        <div class="pagination__list">
+          <div class="number-buttons" id="numberButtonsContainer"></div>
+        </div>
+      </div>
+      <ul class="gallery"></ul>
     </div>
   </div>
 </section>
