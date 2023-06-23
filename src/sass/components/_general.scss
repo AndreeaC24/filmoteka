@@ -23,7 +23,9 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.02em; 
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
 }
 
 ul {
@@ -52,4 +54,4 @@ body.dark {
     color: white;
     border:1px solid var(--main-color);
   }
-}
+} 

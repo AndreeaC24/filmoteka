@@ -48,3 +48,13 @@
     }
   }
 }
+.library__container.hidden {
+  display: none;
+}
+#savedMoviesList {
+  display: block;
+}
+
+#queueMoviesList {
+  display: none;
+}
