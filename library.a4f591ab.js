@@ -1,0 +1,13 @@
+var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},t={},i={},l=e.parcelRequired76b;null==l&&((l=function(e){if(e in t)return t[e].exports;if(e in i){var l=i[e];delete i[e];var a={id:e,exports:{}};return t[e]=a,l.call(a.exports,a,a.exports),a.exports}var d=Error("Cannot find module '"+e+"'");throw d.code="MODULE_NOT_FOUND",d}).register=function(e,t){i[e]=t},e.parcelRequired76b=l);var a=l("bTcpz");function d(e){let{cover:t,title:i,genre:l,year:a}=e,d=`
+    <div class="gallery__items">
+      <div class="gallery__items__img">
+        <img src="${t}" alt="${i}" />
+      </div>
+      <div class="gallery__items__details">
+        <h3 class="gallery__items__details--title">${i}</h3>
+        <p class="gallery__items__details--genres">${l}</p>
+        <p class="gallery__items__details--year">${a}</p>
+      </div>
+    </div>
+  `;return d}var n=l("lQVoc"),s=l("gjiCh"),a=l("bTcpz");const r=document.getElementById("savedMoviesList"),o=document.getElementById("queueMoviesList"),c=document.querySelector(".header__menu__list__item.header__navigation__menu--selected"),_=document.querySelector(".header__menu__list__item:not(.header__navigation__menu--selected)");c.addEventListener("click",()=>{r.style.display="block",o.style.display="none",c.classList.add("header__navigation__menu--selected"),_.classList.remove("header__navigation__menu--selected")}),_.addEventListener("click",()=>{r.style.display="none",o.style.display="block",_.classList.add("header__navigation__menu--selected"),c.classList.remove("header__navigation__menu--selected")});const u=async()=>{try{(0,a.initializeModal)(),function(){let e=document.getElementById("savedMoviesList"),t=JSON.parse(localStorage.getItem("savedData"));t&&Array.isArray(t)&&t.forEach(t=>{if(t.watched){let i=document.createElement("li");i.classList.add("save-movie__items"),i.setAttribute("data-id",t.id);let l=d(t);i.innerHTML=l,i.addEventListener("click",()=>{(0,a.openModal)(t.id),(0,a.initializeModal)()}),e.appendChild(i)}})}(),function(){let e=document.getElementById("queueMoviesList"),t=JSON.parse(localStorage.getItem("savedData"));t&&Array.isArray(t)&&t.forEach(t=>{if(t.queue){let i=document.createElement("li");i.classList.add("queue-movie__items"),i.setAttribute("data-id",t.id);let l=d(t);i.innerHTML=l,i.addEventListener("click",()=>{(0,a.openModal)(t.id),(0,a.initializeModal)()}),e.appendChild(i)}})}(),(0,s.showLoader)(),(0,s.hideLoader)();let e=document.querySelector(".library__container");0===r.childElementCount&&0===o.childElementCount?e.style.display="block":e.style.display="none"}catch(e){console.error("Error",e)}};(0,n.getGalleryElement)(),u();
+//# sourceMappingURL=library.a4f591ab.js.map
