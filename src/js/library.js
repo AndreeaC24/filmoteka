@@ -1,4 +1,4 @@
-import { displaySavedMovies, displayQueueMovies } from './storage';
+import { displayWatchedMovies, displayQueueMovies } from './storage';
 import { getGalleryElement } from './utils';
 import { showLoader, hideLoader } from './loader.js';
 import { openModal, initializeModal, handleWatched } from './modal';
@@ -34,18 +34,17 @@ queueMenuItem.addEventListener('click', () => {
 const initializeApp = async () => {
   try {
     initializeModal();
-    displaySavedMovies();
+    displayWatchedMovies();
     displayQueueMovies();
     showLoader();
     hideLoader();
-
-    const savedMoviesList = document.getElementById('savedMoviesList');
+ 
     const libraryContainer = document.querySelector('.library__container');
 
-    if (savedMoviesList.childElementCount > 0) {
-      libraryContainer.classList.add('hidden');
+    if (savedMoviesList.childElementCount === 0 && queueMoviesList.childElementCount === 0) {
+      libraryContainer.style.display = 'block';
     } else {
-      libraryContainer.classList.remove('hidden');
+      libraryContainer.style.display = 'none';
     }
   } catch (error) {
     console.error('Error', error);

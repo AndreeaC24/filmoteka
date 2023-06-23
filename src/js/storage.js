@@ -15,57 +15,56 @@ function markupGalleryItem(movieData) {
       </div>
     </div>
   `;
-
   return itemContent;
 }
 
-function displaySavedMovies() {
+function displayWatchedMovies() {
   const savedMoviesList = document.getElementById('savedMoviesList');
-  //console.log(savedMoviesList);
   const savedData = JSON.parse(localStorage.getItem('savedData'));
+
   if (savedData && Array.isArray(savedData)) {
     savedData.forEach(movieData => {
-      const movieItem = document.createElement('li');
-      movieItem.classList.add('save-movie__items');
-      movieItem.setAttribute('data-id', movieData.id);
+      if (movieData.watched) {
+        const movieItem = document.createElement('li');
+        movieItem.classList.add('save-movie__items');
+        movieItem.setAttribute('data-id', movieData.id);
 
-      const itemContent = markupGalleryItem(movieData);
-      movieItem.innerHTML = itemContent;
+        const itemContent = markupGalleryItem(movieData);
+        movieItem.innerHTML = itemContent;
 
-      movieItem.addEventListener('click', () => {
-        openModal(movieData.id);
-        console.log(movieData.id);
-        initializeModal();
-      });
+        movieItem.addEventListener('click', () => {
+          openModal(movieData.id);
+          initializeModal();
+        });
 
-      savedMoviesList.appendChild(movieItem);
+        savedMoviesList.appendChild(movieItem);
+      }
     });
   }
 }
 
 function displayQueueMovies() {
   const queueMoviesList = document.getElementById('queueMoviesList');
-  console.log(queueMoviesList);
   const savedData = JSON.parse(localStorage.getItem('savedData'));
 
   if (savedData && Array.isArray(savedData)) {
     savedData.forEach(movieData => {
-      const movieItem = document.createElement('li');
-      movieItem.classList.add('queue-movie__items');
-      movieItem.setAttribute('data-id', movieData.id);
+      if (movieData.queue) {
+        const movieItem = document.createElement('li');
+        movieItem.classList.add('queue-movie__items');
+        movieItem.setAttribute('data-id', movieData.id);
 
-      const itemContent = markupGalleryItem(movieData);
-      movieItem.innerHTML = itemContent;
+        const itemContent = markupGalleryItem(movieData);
+        movieItem.innerHTML = itemContent;
 
-      movieItem.addEventListener('click', () => {
-        openModal(movieData.id);
-        console.log(movieData.id);
-        initializeModal();
-      });
-
-      queueMoviesList.appendChild(movieItem);
+        movieItem.addEventListener('click', () => {
+          openModal(movieData.id);
+          initializeModal();
+        });
+        queueMoviesList.appendChild(movieItem);
+      }
     });
   }
 }
 
-export { displaySavedMovies, displayQueueMovies };
+export { displayWatchedMovies, displayQueueMovies };

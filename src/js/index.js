@@ -20,8 +20,7 @@ const initializeApp = async () => {
     showPage(currentPage);    
     const genreList = await fetchGenreList();
     const popularMovies = await fetchPopularMovies(currentPage); 
-    handleResponse(popularMovies, true, genreList);  
-    //displaySavedMovies();
+    handleResponse(popularMovies, true, genreList);   
     initializeModal();  
     showLoader();
     hideLoader(); 
