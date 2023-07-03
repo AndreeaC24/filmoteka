@@ -1,4 +1,4 @@
-import { fetchMovieDetails, fetchTrailer, fetchExternal } from './fetchmvs';
+import { fetchMovieDetails, fetchTrailer } from './fetchmvs';
 import { nullPoster } from './markup';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
@@ -80,8 +80,9 @@ const createModalContent = movie => {
   });
 };
 
-const openModal = async movieId => {
+const openModal = async movieId => { 
   const movie = await fetchMovieDetails(movieId);
+
   if (movie) {
     createModalContent(movie);
     toggleModal();
@@ -122,9 +123,8 @@ const handleSave = (galleryItem, type) => {
       console.log('Removed from localStorage!');
     }
   } else {
-    const cover = galleryItem
-      .querySelector('.movie__gallery__details--img img').getAttribute('src');
     const title = galleryItem.querySelector('.movie__gallery__details--title').textContent;
+    const cover = galleryItem.querySelector('.movie__gallery__details--img img').getAttribute('src');
     const genre = galleryItem.querySelector('.movie__gallery__details--genres').textContent;
     const year = galleryItem.querySelector('.movie__gallery__details--year').textContent;
     const vote_average = galleryItem.querySelector('.movie__gallery__vote').textContent;

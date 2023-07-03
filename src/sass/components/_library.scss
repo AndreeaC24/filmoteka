@@ -5,7 +5,10 @@
   text-transform: uppercase;
   color: var(--hover-color);
   font-size: 9px;
-  margin: 15px 0 30px 0;
+  margin: 15px 0 30px 0; 
+  &.hidden {
+    display: none;
+  } 
   &--titlu {
     @include center-text;
     font-weight: 400;
@@ -32,6 +35,10 @@
   flex-direction: column;
   gap: 20px;
   margin-bottom: 30px;
+}  
+#savedMoviesList,
+#queueMoviesList {
+  display: none;
 }
 @media (min-width: 768px) {
   .library__container {
@@ -81,3 +88,4 @@
     }
   }
 }
+ 

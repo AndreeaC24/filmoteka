@@ -34,28 +34,35 @@ function displayWatchedMovies() {
         const movieItem = document.createElement('li');
         movieItem.classList.add('save-movie__items');
         movieItem.setAttribute('data-id', movieData.id);
+
         const itemContent = markupGalleryItem(movieData);
         movieItem.innerHTML = itemContent;
+
         movieItem.addEventListener('click', () => {
           openModal(movieData.id);
           initializeModal();
         });
+
         savedMoviesList.appendChild(movieItem);
       }
     });
   }
 }
+
 function displayQueueMovies() {
   const queueMoviesList = document.getElementById('queueMoviesList');
   const savedData = JSON.parse(localStorage.getItem('savedData'));
+
   if (savedData && Array.isArray(savedData)) {
     savedData.forEach(movieData => {
       if (movieData.queue) {
         const movieItem = document.createElement('li');
         movieItem.classList.add('queue-movie__items');
         movieItem.setAttribute('data-id', movieData.id);
+
         const itemContent = markupGalleryItem(movieData);
         movieItem.innerHTML = itemContent;
+
         movieItem.addEventListener('click', () => {
           openModal(movieData.id);
           initializeModal();
@@ -65,4 +72,5 @@ function displayQueueMovies() {
     });
   }
 }
+
 export { displayWatchedMovies, displayQueueMovies };
