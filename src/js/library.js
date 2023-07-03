@@ -46,16 +46,11 @@ const initializeApp = async () => {
     } else {
       libraryContainer.style.display = 'none';
     }
-    document.addEventListener("DOMContentLoaded", function() {
-        // Verificăm dacă ne aflăm în pagina "library.html"
-        if (window.location.pathname.includes("library.html")) {
-          // Verificăm dacă lățimea ferestrei este mai mare sau egală cu 768px
-          if (window.innerWidth >= 768) {
-            // Selectăm elementul cu clasa "footer__container"
-            var footerContainer = document.querySelector(".footer__container");
-          
-            // Adăugăm stilurile CSS dorite
-            footerContainer.style.position = "fixed";
+    document.addEventListener("DOMContentLoaded", function() { 
+        if (window.location.pathname.includes("library.html")) { 
+          if (window.innerWidth >= 768) { 
+            var footerContainer = document.querySelector(".footer__container"); 
+            //footerContainer.style.position = "fixed";
             footerContainer.style.bottom = "0";
           }
         }

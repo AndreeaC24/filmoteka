@@ -2,6 +2,10 @@
   @include flex-center;
   width: var(--width-max);
   background-image: linear-gradient(to left, #d03e3a, #842623);
+  border-radius: 15px;
+  margin: 10px auto;
+  max-width: 350px;
+  height: 120px;
   &__list {
     flex-direction: column;
     @include flex-center;
@@ -22,10 +26,11 @@
 }
 
 @media (min-width: 768px) {
-  .footer__container {
-    margin-top: 20px;
+  .footer__container { 
     display: flex;
     padding: 30px;
+    max-width: 720px;
+    height: 50px;
     &__list {
       flex-direction: row;
       @include flex-center;
@@ -42,7 +47,12 @@
     }
   }
 }
-
+@media (min-width: 1200px) {
+  .footer__container {  
+    max-width: 1216px;
+    height: 50px;
+  }
+}
 #hiddenDiv {
   display: none;
 }
