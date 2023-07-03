@@ -1,137 +1,80 @@
 import { fetchGenreList } from './fetchGenre';
+import Pagination from 'tui-pagination';
 import { handleResponse } from './markup';
-import { fetchMovies, fetchPopularMovies } from './fetchmvs';
+import {fetchMovies, fetchPopularMovies, fetchrated,} from './fetchmvs';
+import { clearGallery } from './galleryClear';
+import { searchQuery } from './search';
+import { initializeModal } from './modal';
 
-const btnsContainer = document.querySelector('.number-buttons');
-const createButtons2 = (page, numberButtonsContainer) => {
-  numberButtonsContainer.innerHTML = '';
-
-  if (currentPage < 5) {
-    for (let i = 2; i <= 6; i++) {
-      const pageBtn = createButton(i - 1);
-      if (currentPage === i - 1) {
-        pageBtn.classList.add('active');
-      }
-      numberButtonsContainer.appendChild(pageBtn);
-    }
-    createNextButton();
-    createPreviousButton();
-    if (currentPage !== page) {
-      numberButtonsContainer.appendChild(createButton(page));
-    }
-  } else if (currentPage >= 3 && currentPage < page) {
-    numberButtonsContainer.appendChild(createButton(1));
-    createNextButton();
-    createPreviousButton();
-    for (let i = currentPage; i <= currentPage + 1; i++) {
-      const pageBtn = createButton(i);
-      numberButtonsContainer.appendChild(pageBtn);
-    }
-    createNextButton();
-    createPreviousButton();
-    if (currentPage !== page) {
-      numberButtonsContainer.appendChild(createButton(page));
-    }
-  }
-};
-
-const numberButtonsContainer = document.getElementById('numberButtonsContainer');
 const currentPage = 1;
-
-createButtons2(currentPage, numberButtonsContainer);
-function createButton(num) {
-  const btn = document.createElement('button');
-  btn.innerText = num;
-  btn.classList.add('pagination__button');
-  btn.setAttribute('data-page', num);
-  return btn;
-}
-let groupStart = 1;
-
-function createPaginationButtons() {
-  const groupSize = 5;
-  const startPage = groupStart;
-  const endPage = startPage + groupSize - 1;
-
-  const existingButtons = document.querySelectorAll(
-    '.number-buttons .pagination__button'
-  );
-  existingButtons.forEach(button => {
-    numberButtonsContainer.removeChild(button);
-  });
-
-  for (let i = startPage; i <= endPage; i++) {
-    const pageBtn = createButton(i);
-    numberButtonsContainer.appendChild(pageBtn);
-    pageBtn.addEventListener('click', () => {
-      const page = pageBtn.getAttribute('data-page');
-      showPage(page);
-    });
-  }
-}
-function createNextButton() {
-  const nextBtn = document.createElement('button');
-  nextBtn.innerText = '►';
-  nextBtn.classList.add('next-btn');
-  nextBtn.disabled = false;
-
-  nextBtn.addEventListener('click', () => {
-    const groupSize = 5;
-    groupStart += groupSize;
-
-    createPaginationButtons();
-  });
-
-  const container = document.getElementById('numberButtonsContainer');
-  container.parentNode.insertBefore(nextBtn, container.nextSibling);
-}
-function createPreviousButton() {
-  const prevBtn = document.createElement('button');
-  prevBtn.innerText = '◄';
-  prevBtn.classList.add('prev-btn');
-  prevBtn.disabled = false;
-
-  prevBtn.addEventListener('click', () => {
-    const groupSize = 5;
-    groupStart -= groupSize;
-    if (groupStart < 1) {
-      groupStart = 1;
-    }
-    createPaginationButtons();
-  });
-
-  const container = document.getElementById('numberButtonsContainer');
-  container.parentNode.insertBefore(prevBtn, container);
-}
-
-createPaginationButtons();
+const popularButton = document.querySelector('.movie__popular__items[value="popular"]');
+const topRatedButton = document.querySelector('.movie__popular__items[value="top-rated"]'); 
+const nodeList = document.querySelectorAll('.movie__gallery__items');
 
 const showPage = async (page, isSearch = false, searchQuery = '') => {
   try {
     const genreList = await fetchGenreList();
     let response;
-
     if (isSearch) {
       response = await fetchMovies(searchQuery, page);
     } else {
       response = await fetchPopularMovies(page);
     }
-
     handleResponse(response, isSearch, genreList);
+    initializeModal();
   } catch (error) {
     console.error('Error', error);
   }
 };
+const showTopRated = async page => {
+  try {
+    const genreList = await fetchGenreList();
+    const response = await fetchrated(page);
+    handleResponse(response, false, genreList);
+    initializeModal();
+  } catch (error) {
+    console.error('Error', error);
+  }
+};
+const moviePopularSection = document.querySelector('.movie__popular');
+const movieTopRatedSection = document.querySelector('.movie__popular');
 
-const paginationButtons = document.querySelectorAll('.pagination__button');
+const container = document.getElementById('pagination');
+const options = {
+  totalItems: 20000,
+  itemsPerPage: 20,
+  visiblePages: 5,
+  page: currentPage,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+};
 
-paginationButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const page = button.dataset.page;
-    const isSearch = button.dataset.search === 'true';
-    const searchQuery = '';
-    showPage(page, isSearch, searchQuery);
+const pagination = new Pagination(container, options); 
+const initializePagination = () => {
+  pagination.on('afterMove', async event => {
+    const newPage = event.page;
+    if (newPage > 500) {
+      pagination.movePageTo(500);
+      return;
+    }
+    clearGallery();
+    if (popularButton.classList.contains('active')) {
+      await showPage(newPage);
+    } else if (topRatedButton.classList.contains('active')) {
+      await showTopRated(newPage);
+    }
+    if (searchQuery !== '') {
+      await showPage(newPage, true, searchQuery); 
+      const nodeList = document.querySelectorAll('.movie__gallery__items');  
+      if (nodeList.length === 0 && newPage !== 1) {
+        pagination.movePageTo(1);  
+      }
+    } 
+    moviePopularSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    movieTopRatedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
-});
 
-export { showPage, createButtons2, paginationButtons };
+  pagination.movePageTo(currentPage);
+};
+export { showPage, showTopRated, initializePagination, pagination, options };

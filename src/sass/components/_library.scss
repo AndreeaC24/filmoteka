@@ -1,13 +1,11 @@
 .library__container {
-  display: flex;
+  @include flex-center;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   line-height: 2;
   text-transform: uppercase;
   color: var(--hover-color);
   font-size: 9px;
-  // height: 100vh;
+  margin: 15px 0 30px 0;
   &--titlu {
     @include center-text;
     font-weight: 400;
@@ -23,13 +21,24 @@
 .dark {
   .library__container {
     color: rgb(17, 133, 200);
-    .library__container--msg {
+    &--msg {
       color: beige;
     }
   }
 }
+#savedMoviesList,
+#queueMoviesList {
+  @include flex-center;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
 @media (min-width: 768px) {
   .library__container {
+    margin: 50px 0 30px 0;
+    &.hidden {
+      display: none;
+    }
     &--titlu {
       font-weight: 700;
     }
@@ -39,22 +48,35 @@
       padding-bottom: 15px;
     }
   }
+  #savedMoviesList,
+  #queueMoviesList {
+    @include flex-center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .save-movie__item {
+    flex-basis: calc((100% / 3) - 60px);
+  }
 }
 .dark {
   .library__container {
     color: rgb(17, 133, 200);
-    .library__container--msg {
+    &--msg {
       color: beige;
     }
   }
 }
-.library__container.hidden {
-  display: none;
-}
-#savedMoviesList {
-  display: block;
-}
-
-#queueMoviesList {
-  display: none;
+@media (min-width: 1200px) {
+  .library__container {
+    &--titlu {
+      font-weight: 700;
+      font-size: 22px;
+    }
+    &--msg {
+      font-size: 32px;
+      font-weight: 500;
+      padding-bottom: 15px;
+    }
+  }
 }

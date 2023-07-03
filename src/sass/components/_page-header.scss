@@ -1,21 +1,9 @@
-@keyframes movieScrolling {
-  0% {
-    transform: translateY(100%);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
 
 .container {
   max-width: 480px;
-  width: 100%;
+  width: var(--width-max);
   margin: 0 auto;
 }
-
 .header {
   &__title {
     font-weight: 500;
@@ -23,9 +11,8 @@
     line-height: 38px;
     @include center-text;
   }
-
   &__menu {
-    padding: 0; 
+    padding: 0;
     &__list {
       @include row;
       @include center-text;
@@ -39,11 +26,8 @@
           @include center-text;
           padding: 10px 23px;
           box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
-          &::before {
-            @include nav-before;
-          }
-          &:hover {
-            @include nav-hover;
+          &::before { @include nav-before;}
+          &:hover { @include nav-hover;
             &::before {
               transform: scale(1);
             }
@@ -68,8 +52,7 @@
     &__logo {
       @include row;
       justify-content: center;
-      align-items: center; 
-
+      align-items: center;
       flex-grow: 1;
       &--link {
         color: var(--main-color);
@@ -80,38 +63,41 @@
         display: flex;
         position: relative;
         overflow: hidden;
-        width: 32px;
-        height: 32px;
+        width: 36px;
+        height: 36px;
         &-svg {
-          width: 32px;
-          height: 32px;
+          width: 36px;
+          height: 36px;
           fill: none;
           position: absolute;
-          animation: movieScrolling 3s linear infinite;
-          transform: translateY(100%);
+        }
+        &-flipper {
+          display: flex;
+          perspective: 1000px;
+          animation: flip-animation 3s infinite;
         }
       }
     }
-    &--switch-btn{
-      display:flex; 
-      justify-content: flex-end;  
-      margin-top:3px; 
-      order:4;
+    &--switch-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 3px;
+      order: 4;
       &-checkbox {
         opacity: 0;
         position: absolute;
-        &:checked + .header__container--switch-btn-checkbox-label .ball { 
+        &:checked + .header__container--switch-btn-checkbox-label .ball {
           transform: translateX(16px);
         }
         &-label {
-          background-color: var(--main-color); 
+          background-color: var(--main-color);
           width: 35px;
           height: 18px;
           border-radius: 50px;
           position: relative;
-          padding:1px; 
-          border:2px solid white;
-          margin:1px;
+          padding: 1px;
+          border: 2px solid var(--main-color);
+          margin: 1px;
           cursor: pointer;
           display: flex;
           justify-content: space-between;
@@ -119,12 +105,12 @@
           .ball {
             background-color: var(--hover-color);
             width: 20px;
-            height: 20px; 
+            height: 20px;
             position: absolute;
             left: -2px;
-            top: -3px; 
+            top: -3px;
             border-radius: 50%;
-            transition: transform 0.2s linear; 
+            transition: transform 0.2s linear;
           }
         }
       }
@@ -134,7 +120,7 @@
     @include row;
     gap: 4px;
     padding-bottom: 8px;
-    &--selected { 
+    &--selected {
       border-radius: 100px;
       .header__navigation__menu__item--link {
         background-color: var(--dark-color);
@@ -165,6 +151,7 @@
     }
   }
 }
+
 @media screen and (min-device-pixel-ratio: 2),
   screen and (min-resolution: 192dpi),
   screen and (min-resolution: 2dppx) {
@@ -173,11 +160,32 @@
     background-size: cover;
   }
 }
-
-#btn_light, #btn_night{ 
-  width:11px;
-  height:20px; 
+#btn_light,
+#btn_night {
+  width: 11px;
+  height: 20px;
 }
+@keyframes movieScrolling {
+  0% {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes flip-animation {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
@@ -220,7 +228,7 @@
         flex-direction: row-reverse;
         justify-content: flex-end;
         align-items: center;
-        gap: var(--main-gap); 
+        gap: var(--main-gap);
         padding: 0;
         order: 1;
         margin-right: auto;
@@ -230,38 +238,37 @@
       &__logo {
         justify-content: flex-start;
         align-items: flex-end;
-        order: 3; 
+        order: 3;
         &--icon {
           width: 40px;
           height: 40px;
           &-svg {
-            width: 40px;
-            height: 40px;
+            width: 41px;
+            height: 41px;
           }
         }
       }
-      
-    &--switch-btn{ 
-      margin-top:0;  
-      &-checkbox { 
-        &:checked + .header__container--switch-btn-checkbox-label .ball {
-          transform: translateX(22px); 
-        }
-        &-label {
-          background-color: var(--main-color);
-          width: 50px;
-          height: 30px; 
-          padding: 5px; 
-          .ball {
-            background-color: var(--hover-color);
-            width: 25px;
-            height: 25px; 
-            left: 0;
-            top: 1px;  
+      &--switch-btn {
+        margin-top: 0;
+        &-checkbox {
+          &:checked + .header__container--switch-btn-checkbox-label .ball {
+            transform: translateX(22px);
+          }
+          &-label {
+            background-color: var(--main-color);
+            width: 50px;
+            height: 30px;
+            padding: 5px;
+            .ball {
+              background-color: var(--hover-color);
+              width: 25px;
+              height: 25px;
+              left: 0;
+              top: 1px;
+            }
           }
         }
       }
-    }
     }
     &__navigation__menu {
       padding-bottom: 0;
@@ -289,10 +296,11 @@
       background-size: cover;
     }
   }
-  #btn_light, #btn_night{ 
-    width:16px;
-    height:22px; 
-}
+  #btn_light,
+  #btn_night {
+    width: 16px;
+    height: 22px;
+  }
 }
 @media (min-width: 1200px) {
   .container {
@@ -309,13 +317,13 @@
       padding: 16px 32px 32px 32px;
       width: var(--width-max);
       max-width: 1216px;
-      height: 316px; 
+      height: 316px;
       &__logo--icon {
-        width: 59px;
-        height: 59px;
+        width: 62px;
+        height: 62px;
         &-svg {
           width: 59px;
-          height: 59px;
+          height: 72px;
         }
       }
     }

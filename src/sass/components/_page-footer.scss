@@ -1,188 +1,48 @@
 .footer__container {
-  border-top:3px solid #ccc;
-  margin-top:50px;
-  position: static;
-  bottom: 0;
-  width: var(--width-max);
-  padding-bottom: 30px;
-  padding-top: 30px;
   @include flex-center;
+  width: var(--width-max);
+  background-image: linear-gradient(to left, #d03e3a, #842623);
   &__list {
-    @include flex-center;
     flex-direction: column;
-    gap: 10px;
-    &--students {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      a {
-        color: var(--hover-color);
-        font-weight: 700;
-        text-decoration: underline;
-      }
+    @include flex-center;
+    gap: 15px;
+    color: var(--main-color);
+    padding: 5px 10px;
+  }
+  &__item {
+    &--svg {
+      width: 17px;
+      height: 17px;
     }
-    &--copyright {
-      justify-content: space-around;
+    &--student {
+      font-size: 14px;
+      font-weight: 700;
     }
-    &--dev {
-      @include row;
-      justify-content: center;
-      align-items: center;
-      &-heart {
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-      &-icon {
-        animation: beat 0.8s linear infinite alternate-reverse;
-        -webkit-animation: beat 0.8s linear infinite alternate-reverse;
-        @include beat-animation;
-      }
+  }
+}
+
+@media (min-width: 768px) {
+  .footer__container {
+    margin-top: 20px;
+    display: flex;
+    padding: 30px;
+    &__list {
+      flex-direction: row;
+      @include flex-center;
+      gap: 10px;
     }
-    &--students-toggle {
-      border: 1.5px solid var(--hover-color);
-      color: var(--dark-color);
-      font-size: 12px;
-      padding: 5px;
-      width: var(--width-max);
-      margin: 15px auto;
+    &__item {
+      &--svg {
+        width: 15px;
+        height: 15px;
+      }
+      &--student {
+        font-size: 12px;
+      }
     }
   }
 }
 
 #hiddenDiv {
   display: none;
-}
-.team {
-  &__container {
-    @include flex-center;
-    flex-direction: column;
-  }
-  &__title {
-    padding-top: 25px;
-    margin-bottom: 10px;
-    font-size: 32px;
-    color: var(--hover-color);
-    border-bottom: 3px solid var(--hover-color);
-  }
-  &__list {
-    @include flex-center;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    flex-wrap: wrap;
-    &__item {
-      background-color: var(--main-color);
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-        0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-      border-radius: 0px 0px 4px 4px;
-      max-width: 100%;
-      height: auto;
-      padding: 20px;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 2px 2px 10px 1px var(--hover-color);
-      width: var(--width-max);
-      max-width: 100%;
-      transition: transform 0.3s ease;
-      &:hover {
-        transform: scale(1.05);
-      }
-      &__img {
-        width: var(--width-max);
-        height: auto;
-        padding: 10px;
-      }
-      &__social {
-        @include flex-center;
-        &__link {
-          display: flex;
-          @include flex-center;
-          width: 44px;
-          height: 44px;
-          padding: 1px;
-          margin: 3px;
-          background-color: transparent;
-          &--icon {
-            width: 25px;
-            height: 25px;
-          }
-          .team__list__item__description {
-            @include flex-center;
-            flex-direction: column;
-            padding-top: 10px;
-            padding-bottom: 10px;
-          }
-          &:hover,
-          .team__list__item__social__link:focus {
-            transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 50%;
-            fill: var(--main-color);
-            background-color: var(--hover-color);
-          }
-        }
-      }
-      &__description {
-        @include flex-center;
-        flex-direction: column;
-        &__name {
-          font-size: 20px;
-          font-weight: 500;
-          margin-bottom: 5px;
-        }
-        &__role {
-          font-size: 14px;
-          margin-top: 0;
-          font-weight: 600;
-          color: var(--hover-color);
-        }
-      }
-    }
-  }
-}
-@media (min-width: 768px) {
-  .footer__container__list--students-toggle {
-    font-size: 14px;
-    padding: 8px;
-    margin-top: 20px;
-  }
-  .team {
-    &__title {
-      padding-top: 18px;
-      font-weight: 500;
-    }
-    &__list {
-      display: flex;
-      flex-direction: row;
-      @include flex-center;
-      &__item {
-        flex-basis: calc(50% - 20px);
-        &__img {
-          padding: 15px;
-          width: var(--width-max);
-          height: auto;
-        }
-      }
-    }
-  }
-}
-@media (min-width: 1200px) {
-  .footer__container__list--students-toggle {
-    font-size: 16px;
-    padding: 10px;
-    margin-top: 30px;
-  }
-  .team {
-    &__title {
-      padding-top: 20px;
-    }
-    &__list {
-      display: flex;
-      flex-direction: row;
-      &__item {
-        flex-basis: calc(25% - 20px);
-      }
-    }
-  }
 }

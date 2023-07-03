@@ -4,10 +4,14 @@
   background-repeat: no-repeat;
   border-radius: 15px;
 }
-
 @mixin center-text {
   align-items: center;
   text-align: center;
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @mixin row {
   display: flex;
@@ -40,11 +44,6 @@
   transform: scale(0.9);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 @mixin btn {
   width: 30px;
   height: 30px;
@@ -64,6 +63,7 @@
   background-color: var(--main-color);
   color: var(--hover-color);
 }
+
 @mixin beat-animation {
   @keyframes beat {
     0% {

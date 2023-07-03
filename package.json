@@ -19,7 +19,12 @@
   },
   "dependencies": {
     "axios": "^1.4.0",
-    "modern-normalize": "^2.0.0"
+    "basiclightbox": "^5.0.4",
+    "modern-normalize": "^2.0.0",
+    "node-fetch": "^2.6.12",
+    "simplelightbox": "^2.14.1",
+    "swiper": "^9.4.1",
+    "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

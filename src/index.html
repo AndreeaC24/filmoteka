@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="fa">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,22 +11,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="./images/icon_bar.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" /> 
+  <link rel="stylesheet" href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" />
 </head>
-
 <body>
   <!--PARTIALS-->
-  <include src="./partials/header.html"></include>
   <include src="./partials/loader.html"></include>
-  <include src="./partials/movieGallery.html"></include> 
+  <include src="./partials/header.html"></include>
+  <include src="./partials/slider.html"></include>
+  <include src="./partials/movie.html"></include> 
   <include src="./partials/modal.html"></include>
   <include src="./partials/footer.html"></include>
   <include src="./partials/scroll.html"></include>
-
   <!--js-->
-  <script type="module" src="./js/index.js"></script> 
-  <script type="module" src="./js/scroll.js"></script>
-  <script type="module" src="./js/switch.js"></script>
-  <script type="module" src="./js/footer.js"></script>
+  <script type="module" src="./js/index.js"></script>  
+  <script type="module" src="./js/switch.js"></script> 
+  <script type="module" src="./js/scroll.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> 
 </body>
-
 </html>

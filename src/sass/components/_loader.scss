@@ -5,7 +5,7 @@
   left: 0;
   width: var(--width-max);
   height: 100%;
-  background-color: rgba(35, 38, 45, 0.9);
+  background-color: rgba(35, 38, 45, 0.9); 
   align-items: center;
   justify-content: center;
   z-index: 9999;
@@ -17,7 +17,7 @@
   animation: spin 3s ease-in-out infinite;
   transform-origin: center center;
   fill: var(--main-color);
-  stroke: black;
+  stroke: var(--dark-color);;
 }
 @keyframes spin {
   50% {
