@@ -39,7 +39,14 @@ const initializeApp = async () => {
     }
     hideLoader();
     document.addEventListener("DOMContentLoaded", function() {  
-           queueMoviesList.style.display = 'none';
+           queueMoviesList.style.display = 'none'; 
+           if (window.innerWidth >= 768) {
+            var footerContainer = document.querySelector(".footer__container");
+            footerContainer.style.position = "fixed";
+            footerContainer.style.bottom = "0";
+            footerContainer.style.left = "50%";
+            footerContainer.style.transform = "translateX(-50%)"; 
+          }
       });
       
   } catch (error) {
