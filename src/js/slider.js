@@ -78,7 +78,7 @@ const eventSlider = () => {
         const { key } = results[results.length - 1];
         const instance = basicLightbox.create(
           `<button id="closeButton">X</button>
-            <iframe id="player" type="text/html" src="http://www.youtube.com/embed/${key}?enablejsapi=1&origin=http://example.com"
+            <iframe id="player" type="text/html" src="https://www.youtube.com/embed/${key}?enablejsapi=1&origin=http://example.com"
             frameborder="0" allowfullscreen></iframe>`
         );
         instance.show();
