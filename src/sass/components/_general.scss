@@ -119,13 +119,12 @@ body.dark {
       }
     }
   }
-  
-.red-vote {
-  color: red;
-}
-.green-vote {
-  color: rgb(51, 151, 51);
-}
+    .red-vote {
+      color: red;
+    }
+    .green-vote {
+      color: rgb(51, 151, 51);
+    }
 }
 iframe {
   width: 340px;
@@ -156,10 +155,4 @@ iframe {
 
 .hidden {
   display: none;
-}
-.red-vote {
-  color: red;
-}
-.green-vote {
-  color: rgb(51, 151, 51);
 }

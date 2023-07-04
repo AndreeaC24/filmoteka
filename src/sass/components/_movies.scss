@@ -1,5 +1,5 @@
 .movie {
-  padding: 40px;
+  padding: 40px; 
   &__container {
     margin: 0 auto;
     max-width: var(--width-max);
@@ -203,4 +203,11 @@
   color: var(--main-color);
   border: 1px solid var(--main-color);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.red-vote {
+  color: red;
+}
+.green-vote {
+  color: rgb(51, 151, 51);
 }

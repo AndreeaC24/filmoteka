@@ -1,10 +1,9 @@
 import { getGalleryElement } from './utils';
 import { clearGallery } from './galleryClear';
 import { initializePagination, pagination } from './page.js';
-import { markupLoad, eventSlider } from './slider.js';
+import { eventSlider, markupLoad } from './slider.js';
 import { showLoader, hideLoader } from './loader.js';
 import './search';
-
 
 const popularButton = document.querySelector('.movie__popular__items[value="popular"]');
 const topRatedButton = document.querySelector('.movie__popular__items[value="top-rated"]');

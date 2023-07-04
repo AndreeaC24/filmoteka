@@ -6,7 +6,6 @@ import { initializeModal } from './modal';
 const initialize = () => {
   getGalleryElement();
 };
-
 const savedMoviesList = document.getElementById('savedMoviesList');
 const queueMoviesList = document.getElementById('queueMoviesList');
 const watchedMenuItem = document.querySelector('.header__menu__list__item.header__navigation__menu--selected');
@@ -14,9 +13,9 @@ const queueMenuItem = document.querySelector('.header__menu__list__item:not(.hea
 
 watchedMenuItem.addEventListener('click', () => {
   savedMoviesList.style.display = 'flex';
+  queueMoviesList.style.display = 'none';
   watchedMenuItem.classList.add('header__navigation__menu--selected');
   queueMenuItem.classList.remove('header__navigation__menu--selected');
-  queueMoviesList.style.display = 'none';
 });
 
 queueMenuItem.addEventListener('click', () => {
@@ -27,10 +26,10 @@ queueMenuItem.addEventListener('click', () => {
 });
 const initializeApp = async () => {
   try {
-    initializeModal();
+    showLoader();
     displayWatchedMovies();
     displayQueueMovies();
-    showLoader();
+    initializeModal();
     const libraryContainer = document.querySelector('.library__container');
     if (savedMoviesList.childElementCount === 0 && queueMoviesList.childElementCount === 0) {
       libraryContainer.style.display = 'flex';

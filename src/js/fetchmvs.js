@@ -4,9 +4,8 @@ const API_KEY = '44cd7d40e9c9ffc80f6b2e51bac6d9ee';
 const URL = 'https://api.themoviedb.org/3';
 
 const fetchMovies = async (searchQuery, page) => {
-  try {
-    const response = await axios.get(`${URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&language=en-US&page=${page}`);   
-    return response.data;
+  try {const response = await axios.get(`${URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&language=en-US&page=${page}`);
+   return response.data;
   } catch (error) {
     console.error('Something went wrong with the API search fetch: ' + error);
   }

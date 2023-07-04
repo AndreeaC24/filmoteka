@@ -41,7 +41,7 @@ const markupSlider = data => {
     .map(({ id, title, poster_path }) => {
       return `
       <li class="swiper-slide">
-        <a class="swiper-link" href="#" data-id="${id}">
+        <a class="swiper-link" href="#" data-swiper-id="${id}">
         <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" />
         <button class="swiper-backdrop">
             <svg class="swiper-backdrop-icon-play" viewBox="0 0 512 512">
@@ -66,16 +66,18 @@ const markupLoad = async () => {
     console.error(error.message);
   }
 };
-const eventSlider = () => {
-  const swiperLinks = document.querySelectorAll('.swiper-link');
+const eventSlider = () => { 
+ const swiperLinks = document.querySelectorAll('[data-swiper-id]');
+
   swiperLinks.forEach(link => {
     link.addEventListener('click', async evt => {
-      evt.preventDefault();
-      const movieId = link.dataset.id;
+      evt.preventDefault(); 
+      const movieId = link.dataset.swiperId;
       if (!movieId) return;
       try {
-        const { results } = await fetchTrailer(movieId);
-        const { key } = results[results.length - 1];
+        const { results } = await fetchTrailer(movieId); 
+        const { key } = results.find(video => video.type === 'Trailer');
+
         const instance = basicLightbox.create(
           `<button id="closeButton">X</button>
             <iframe id="player" type="text/html" src="https://www.youtube.com/embed/${key}?enablejsapi=1&origin=http://example.com"
@@ -92,4 +94,4 @@ const eventSlider = () => {
     });
   });
 };
-export { swiper, markupLoad, eventSlider };
+export { markupLoad, eventSlider };

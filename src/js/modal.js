@@ -81,8 +81,8 @@ const createModalContent = movie => {
 };
 
 const openModal = async movieId => { 
+  console.log('Modal ID:', movieId);
   const movie = await fetchMovieDetails(movieId);
-
   if (movie) {
     createModalContent(movie);
     toggleModal();
@@ -105,7 +105,8 @@ const openModal = async movieId => {
 };
 const handleSave = (galleryItem, type) => {
   const id = galleryItem.getAttribute('data-id');
-
+  console.log(galleryItem);
+  
   let savedData = JSON.parse(localStorage.getItem('savedData')) || [];
   const existingMovieIndex = savedData.findIndex(movie => movie.id === id);
 
@@ -128,7 +129,17 @@ const handleSave = (galleryItem, type) => {
     const genre = galleryItem.querySelector('.movie__gallery__details--genres').textContent;
     const year = galleryItem.querySelector('.movie__gallery__details--year').textContent;
     const vote_average = galleryItem.querySelector('.movie__gallery__vote').textContent;
-    const movieData = {id, cover, title, genre, year, vote_average, watched: type === 'watched', queue: type === 'queue',};
+    const movieData = {
+      id,
+      cover,
+      title,
+      genre,
+      year,
+      vote_average,
+      watched: type === 'watched',
+      queue: type === 'queue',
+    };
+
     savedData.unshift(movieData);
     console.log('Added to localStorage!');
   }
@@ -145,21 +156,27 @@ const handleSave = (galleryItem, type) => {
     window.location.reload();
   }
 };
+
 const getWatchedButtonText = id => {
   const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
   const existingMovie = savedData.find(movie => movie.id === id);
-  return existingMovie && existingMovie.watched ? 'Remove from Watched'  : 'Watched';
+  return existingMovie && existingMovie.watched
+    ? 'Remove from Watched'
+    : 'Watched';
 };
+
 const getQueueButtonText = id => {
   const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
   const existingMovie = savedData.find(movie => movie.id === id);
   return existingMovie && existingMovie.queue ? 'Remove from Queue' : 'Queue';
 };
+
 const initializeModal = () => {
-  const galleryElements = document.querySelectorAll('.movie__gallery__items'); 
-  galleryElements.forEach(element => { 
+  const galleryElements = document.querySelectorAll('.movie__gallery__items');
+
+  galleryElements.forEach(element => {
     element.addEventListener('click', async event => {
-      const movieId = event.currentTarget.dataset.id; 
+      const movieId = event.currentTarget.dataset.id;
       openModal(movieId);
       galleryElements.forEach(el => {
         el.classList.remove('selected');
@@ -167,16 +184,19 @@ const initializeModal = () => {
       event.currentTarget.classList.add('selected');
     });
   });
+
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       toggleModal();
     }
   });
+
   modal.addEventListener('click', event => {
     if (!modal.contains(event.target) || event.target === modal) {
       toggleModal();
     }
   });
+
   const watchedButton = modalContent.querySelector('.btn-watched');
   const queueButton = modalContent.querySelector('.btn-queue');
 
@@ -195,4 +215,5 @@ const initializeModal = () => {
     });
   }
 };
+
 export { openModal, initializeModal, handleSave };
