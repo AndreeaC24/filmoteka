@@ -44,7 +44,7 @@
 // }
 @media (min-width: 768px) {
   .library__container {
-    margin: 0 0 100px 0;
+    margin: 50px 0 100px;
     &.hidden {
       display: none;
     }
@@ -88,6 +88,11 @@
       font-weight: 500;
       padding-bottom: 15px;
     }
+  }
+  
+  #savedMoviesList,
+  #queueMoviesList { 
+    margin-bottom: 65px;
   }
 }
  
